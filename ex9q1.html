@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex9q1(23BCE1777)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>NEW YORK City Temperature Analysis</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Temperature (°F)</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody id="temperatureTable"></tbody>
+    </table>
+    <div>
+        <p><strong>Number of HOT days:</strong> <span id="hotDays"></span></p>
+        <p><strong>Number of PLEASANT days:</strong> <span id="pleasantDays"></span></p>
+        <p><strong>Number of COLD days:</strong> <span id="coldDays"></span></p>
+    </div>
+    <script src="temp.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex9q3(23BCE1777)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            width: 400px;
+            margin: auto;
+            border: 1px solid black;
+        }
+
+        fieldset {
+            margin-bottom: 10px;
+        }
+
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .title select {
+            width: 60px;
+        }
+
+        .input-section label {
+            font-weight: bold;
+            display: block;
+        }
+
+        .input-section input {
+            width: 100%;
+            height: 20px;
+            font-size: 12px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .result-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bmi-label {
+            font-weight: bold;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid black;
+            width: 60px;
+        }
+
+        .bmi-output {
+            flex-grow: 1;
+            margin-left: 5px;
+        }
+
+        .bmi-output input {
+            width: 90%;
+            height: 20px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post">
+        <!-- Title Section -->
+        <fieldset class="title">
+            <label>BMI Calculator</label>
+            <select>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </fieldset>
+
+        <!-- Weight Input -->
+        <fieldset class="input-section">
+            <label for="weight">Enter Your Weight:</label>
+            <span>(in pounds)</span>
+            <input type="text" id="weight" name="weight" required>
+        </fieldset>
+
+        <!-- Height Input -->
+        <fieldset class="input-section">
+            <label for="height">Enter Your Height:</label>
+            <span>(feet)</span>
+            <input type="text" id="heightFeet" name="heightFeet" required>
+            <span>(inches)</span>
+            <input type="text" id="heightInches" name="heightInches" required>
+        </fieldset>
+
+        <!-- Calculate Button -->
+        <fieldset class="center">
+            <button type="button" onclick="calculateBMI()">Calculate</button>
+        </fieldset>
+
+        <!-- BMI Output Section -->
+        <div class="result-section">
+            <div class="bmi-label">YOUR<br>BMI</div>
+            <div class="bmi-output">
+                <input type="text" id="bmiOutput" readonly>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function calculateBMI() {
+    const weight = parseFloat(document.getElementById("weight").value); // Get weight in pounds
+    const heightFeet = parseFloat(document.getElementById("heightFeet").value); // Get height in feet
+    const heightInches = parseFloat(document.getElementById("heightInches").value); // Get height in inches
+    const gender = document.querySelector("select").value; // Get selected gender
+
+    if (isNaN(weight) || isNaN(heightFeet) || isNaN(heightInches)) {
+        alert("Please enter valid numeric values for all fields!");
+        return;
+    }
+
+    // Convert height to total inches
+    const totalHeightInches = (heightFeet * 12) + heightInches;
+
+    // BMI formula
+    const bmi = (703 * weight) / (totalHeightInches ** 2);
+    const roundedBMI = bmi.toFixed(2);
+
+    // Display BMI in the output box
+    document.getElementById("bmiOutput").value = roundedBMI;
+
+    // Determine BMI category based on gender
+    let status = "";
+    if (gender === "male") {
+        if (bmi < 17.5) {
+            status = "Anorexia";
+        } else if (bmi >= 17.5 && bmi <= 20.7) {
+            status = "Underweight";
+        } else if (bmi >= 20.71 && bmi <= 26.4) {
+            status = "Ideal Range";
+        } else if (bmi >= 26.41 && bmi <= 31.1) {
+            status = "Marginally Overweight";
+        } else {
+            status = "Very Overweight or Obese";
+        }
+    } else if (gender === "female") {
+        if (bmi < 17.5) {
+            status = "Anorexia";
+        } else if (bmi >= 17.5 && bmi <= 19.1) {
+            status = "Underweight";
+        } else if (bmi >= 19.11 && bmi <= 25.8) {
+            status = "Ideal Range";
+        } else if (bmi >= 25.81 && bmi <= 27.3) {
+            status = "Marginally Overweight";
+        } else {
+            status = "Very Overweight or Obese";
+        }
+    }
+
+    // Show the result in a popup
+    alert(`Your BMI is ${roundedBMI}.\nStatus: ${status}`);
+}
+
+    </script>
+</body>
+</html>

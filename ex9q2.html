@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex9q2(23BCE1777)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        .output, .tickets {
+            margin-top: 20px;
+        }
+        .ticket {
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 5px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Airline Reservation System</h2>
+    <button onclick="reserveSeat()">Reserve a Seat</button>
+    <div class="output" id="output"></div>
+    <div class="tickets">
+        <h3>All Tickets:</h3>
+        <div id="ticketsList"></div>
+    </div>
+    <script src="airline.js"></script>
+</body>
+</html>
